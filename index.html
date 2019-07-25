@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>首页</title>
+    <meta charSet="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta httpEquiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+ 	<style>
+ 		* {
+    padding: 0;
+    margin: 0;
+}
+ 
+.main {
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+}
+ 
+.banner {
+    width: 100vw;
+    height: 160px;
+    overflow: hidden;
+}
+ 
+.banner-slide {
+    width: 100vw;
+    height: 160px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.title{
+	    padding: 5px;
+    font-weight: 700;
+}
+ 
+.slide1 {
+    background-image: url("img/logo1.png");
+}
+.slide2 {
+    background-image: url("img/logo2.jpg");
+}
+.slide3 {
+    background-image: url("img/logo3.jpg");
+}
+.slide4 {
+    background-image: url("img/logo4.jpg");
+}
+.app{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+.app .row{
+	/*width: 33vw;*/
+}
+.row .img-wrap{
+	width:100%;
+	height:0; 
+	padding-bottom:100%;
+	overflow:hidden;
+	margin:0;
+	position:relative;
+}
+.app .row .img-wrap img{
+	width:100%;
+  height:100%;
+  position:absolute;
+}
+.middle{
+
+}
+.text{
+	text-align: center;
+	color: #555;
+	font-size:12px;
+	padding: 4px 0;
+}
+[v-cloak]{
+  display: none;
+}
+ 	</style>
+  <body>
+  	<div class="main" id="main">
+        <div class="banner" id="banner">
+            <a href="#">
+                <div class="banner-slide slide1"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide2"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide3"></div>
+            </a>
+            <a href="#">
+                <div class="banner-slide slide4"></div>
+            </a>
+        </div>
+        <p class="title">Color | 电子色卡</p>
+        <div id="app" class="app">
+        	<div class="row" v-for="(item,index) in list" :key="item.title" 
+        		:style="index%3==1?middlStyle:norStyle" @click="go(item.url)">
+        		<div class="img-wrap">
+        			<img :src="'img/colors/'+item.title+'.jpg' "/>
+        		</div>
+        		
+        		<div v-cloak class="text">{{item.title}}</div>
+        	</div>
+        </div>
+    </div>
+  </body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+	console.log('--',document.documentElement.clientWidth)
+	let width = document.documentElement.clientWidth;
+	const colWidth = (width-2)/3
+	var app = new Vue({
+  el: '#app',
+  methods:{
+  	go(url){
+  		location.href = url;
+  	}
+  },
+  data: {
+  	middlStyle: {
+  		marginLeft: '1px',
+  		marginRight: '1px',
+  		width:colWidth+'px'
+  	},
+  	norStyle:{
+  		width:colWidth+'px'
+  	},
+    list: [
+    	{title: 'LSL-001-茉莉白', url: 'https://720yun.com/t/fevkn7dbp1m'},
+    	{title: 'LSL-002-象牙黄', url: 'https://720yun.com/t/7dvkn7db08l'},
+        {title: 'LSL-003-藤黄色', url: 'https://720yun.com/t/20vkn7db089'},
+        {title: 'LSL-004-优雅日光', url: 'https://720yun.com/t/5cvkn7db08w'},
+        {title: 'LSL-005-水蓝色', url: 'https://720yun.com/t/eavkn7db08q'},
+        {title: 'LSL-006-春绿色', url: 'https://720yun.com/t/eevkn7db07y'},
+        {title: 'LSL-007-奶油黄', url: 'https://720yun.com/t/49vkn7db077'},
+        {title: 'LSL-008-樱草黄', url: 'https://720yun.com/t/41vkn7db07h'},
+        {title: 'LSL-009-星空蓝', url: 'https://720yun.com/t/1cvkn7db07b'},
+        {title: 'LSL-010-豆青色', url: 'https://720yun.com/t/f5vkn7db0py'},
+        {title: 'LSL-011-姜黄色', url: 'https://720yun.com/t/27vkn7db0ph'},
+        {title: 'LSL-012-秋黄色', url: 'https://720yun.com/t/ccvkn7db02l'},
+        {title: 'LSL-013-春粉色', url: 'https://720yun.com/t/e2vkn7db027'},
+        {title: 'LSL-014-柔粉', url: 'https://720yun.com/t/3dvkn7db02h'},
+        {title: 'LSL-015-霜白色', url: 'https://720yun.com/t/40vkn7db0qe'},
+        {title: 'LSL-016-水粉色', url: 'https://720yun.com/t/b9vkn7db0qq'},
+        {title: 'LSL-017-浅驼色', url: 'https://720yun.com/t/5bvkn7db0fy'},
+        {title: 'LSL-018-浅咖啡', url: 'https://720yun.com/t/57vkn7db0dm'},
+        {title: 'LSL-019-米灰色', url: 'https://720yun.com/t/efvkn7db0ry'},
+        {title: 'LSL-020-藕粉色', url: 'https://720yun.com/t/e2vkn7db0rm'},
+        {title: 'LSL-021-粉红色', url: 'https://720yun.com/t/51vkn7db0rh'},
+        {title: 'LSL-022-栗色', url: 'https://720yun.com/t/55vkn7db01e'},
+        {title: 'LSL-023-相思灰', url: 'https://720yun.com/t/ffvkn7db01y'},
+        {title: 'LSL-024-丁香紫', url: 'https://720yun.com/t/06vkn7db017'},
+        {title: 'LSL-025-宝石蓝', url: 'https://720yun.com/t/79vkn7db01b'},
+        {title: 'LSL-026-葱绿色', url: 'https://720yun.com/t/05vkn7dbs8e'},
+        {title: 'LSL-027-金黄色', url: 'https://720yun.com/t/03vkn7dbs8w'},
+        {title: 'LSL-028-翡翠绿', url: 'https://720yun.com/t/b2vkn7dbs87'},
+        {title: 'LSL-029-孔雀蓝', url: 'https://720yun.com/t/00vkn7dbs8b'},
+        {title: 'LSL-030-竹青色', url: 'https://720yun.com/t/31vkn7dbs7w'},
+        {title: 'LSL-031-卡其黄', url: 'https://720yun.com/t/b3vkn7dbsp9'},
+        {title: 'LSL-032-夏日精灵', url: 'https://720yun.com/t/bevkn7dbsp7'},
+        {title: 'LSL-033-黛青色', url: 'https://720yun.com/t/fevkn7dbspm'},
+        {title: 'LSL-034-青绿色', url: 'https://720yun.com/t/86vkn7dbs2l'},
+        {title: 'LSL-035-核桃黄', url: 'https://720yun.com/t/b3vkn7dbs2y'},
+        {title: 'LSL-036-织锦灰', url: 'https://720yun.com/t/13vkn7dbs2m'},
+        {title: 'LSL-049-银灰色', url: 'https://720yun.com/t/8evkn7dbz77'},
+        {title: 'LSL-038-桑染', url: 'https://720yun.com/t/68vkn7dbzpy'},
+        {title: 'LSL-050-旭日阳光', url: 'https://720yun.com/t/4avkn7dbzql'},
+        {title: 'LSL-040-藕荷色', url: 'https://720yun.com/t/4fvkn7dbzfl'},
+        {title: 'LSL-051-海天一色', url: 'https://720yun.com/t/aevkn7dbzfw'},
+        {title: 'LSL-052-雪青白', url: 'https://720yun.com/t/94vkn7dbzib'},
+        {title: 'LSL-043-高级灰', url: 'https://720yun.com/t/58vkn7dbzdw'},
+        {title: 'LSL-053-薄荷绿', url: 'https://720yun.com/t/c8vkn7dbzdh'},
+        {title: 'LSL-054-珍珠白', url: 'https://720yun.com/t/advkn7dbzry'},
+        {title: 'LSL-046-檀香色', url: 'https://720yun.com/t/b2vkn7dbz1e'},
+        {title: 'LSL-055-青莹色', url: 'https://720yun.com/t/e7vkn7dbz1b'},
+        {title: 'LSL-056-蓝疆色', url: 'https://720yun.com/t/59vkn7dbg8q'},
+    ]
+  }
+})
+</script>
+<script>
+var timer = null,
+    index = 0,
+    pics = document.getElementsByClassName("banner-slide");
+    // lis = document.getElementsByTagName("li");
+ 
+ 
+//封装一个代替getElementById()的方法
+function byId(id){
+    return typeof(id) === "string"?document.getElementById(id):id;
+}
+ 
+function slideImg() {
+    var main = byId("main");
+    var banner = byId("banner");
+    main.onmouseover = function(){
+        stopAutoPlay();
+    }
+    main.onmouseout = function(){
+        startAutoPlay();
+    }
+    main.onmouseout();
+}
+//开始播放轮播图
+function startAutoPlay(){
+    timer = setInterval(function(){
+        index++;
+        if(index>3){
+            index = 0;
+        }
+        changeImg();
+    },2000);
+}
+//暂停播放
+function stopAutoPlay(){
+    if (timer) {
+        clearInterval(timer);
+    }
+}
+//改变轮播图
+function changeImg(){
+    for(var i=0;i<pics.length;i++){
+        pics[i].style.display = "none";
+        // lis[i].className = "";
+    }
+    pics[index].style.display = "block";
+    // lis[index].className = "changeColor";
+}
+slideImg();
+</script>
+</html>
